@@ -1,0 +1,52 @@
+MEISET MAGAZASI — JAVA SPRING BOOT + MYSQL (v2.0)
+
+LAZIM OLANLAR
+- JDK 17 və ya daha yeni
+- Maven (və ya Eclipse-də Maven dəstəyi)
+- MySQL Server / MySQL Workbench
+- İnternet (Maven asılılıqlarının ilk dəfə yüklənməsi üçün)
+
+1. MYSQL DATABASE
+- MySQL Workbench və ya phpMyAdmin açın.
+- database/database.sql faylını bütöv icra edin (8 kateqoriya, 64 məhsul, users cədvəli).
+
+2. LAYİHƏNİN AÇILMASI
+- ZIP-i çıxarın. Qovluq adı: meiset-magazasi
+- Eclipse: File > Import > Maven > Existing Maven Projects, root olaraq meiset-magazasi qovluğunu seçin.
+- Və ya terminalda: cd meiset-magazasi && mvn spring-boot:run
+
+3. VERİLƏNLƏR BAZASI PARAMETRLƏRİ (MÜHİT DƏYİŞƏNLƏRİ)
+Şifrə artıq kodda saxlanmır. Aşağıdakı dəyişənləri təyin edin:
+- DB_USERNAME (default: root)
+- DB_PASSWORD (default: boş)
+Məsələn Windows PowerShell:  $env:DB_PASSWORD="sizin_şifrəniz"
+Məsələn Linux/macOS:         export DB_PASSWORD="sizin_şifrəniz"
+Eclipse-də: Run Configurations > Environment qismində də təyin etmək olar.
+
+4. TESTLƏR
+- mvn test  (sifariş qiymətinin hesablanması, naməlum məhsul və miqdar limiti yoxlanılır)
+
+5. SERVERİ BAŞLAT
+- MeisetMagazasiApplication.java > Run As > Java Application (və ya Spring Boot App).
+- Konsolda "Started MeisetMagazasiApplication" mesajını gözləyin.
+
+6. SAYTI AÇ
+- Live Server istifadə ETMƏYİN.
+- Brauzerdə http://localhost:8080/ açın.
+
+API ENDPOINT-LƏR
+- GET  /api/products        — bütün məhsullar (kateqoriya adı ilə)
+- GET  /api/categories      — kateqoriyalar
+- POST /api/orders          — sifariş. Gövdə: { customer_name, phone, address, note, items: [{ productId, quantity }] }
+- POST /api/auth/register   — qeydiyyat. Gövdə: { full_name, email, password }  (şifrə BCrypt ilə hash-lənir)
+
+İŞ PRİNSİPİ
+- Məhsullar bazadan API ilə yüklənir; HTML-də qiymət və ad yazılmır.
+- Səbət brauzerin localStorage-dadır və məhsulu productId ilə saxlayır.
+- Sifariş qiyməti yalnız MySQL-dən hesablanır; brauzerdən gələn qiymət nəzərə alınmır.
+- Sifariş və sifariş sətirləri bir transaction daxilində yazılır.
+- Eyni məhsuldan 1-99 ədəd sifariş etmək olar.
+
+QEYD
+Bu tədris layihəsidir. Real ödəniş, çatdırılma inteqrasiyası, giriş (login) və admin panel daxil deyil.
+Qeydiyyat formu istifadəçini bazaya yazır, lakin sessiya/giriş mexanizmi hələ yoxdur.

@@ -1,0 +1,6 @@
+package az.meisetmagazasi.repository;
+
+import az.meisetmagazasi.model.Category;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CategoryRepository extends JpaRepository<Category, Integer> {}

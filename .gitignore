@@ -1,0 +1,18 @@
+# Maven / build çıxışları
+target/
+
+# IDE faylları
+.settings/
+.classpath
+.project
+.idea/
+*.iml
+.vscode/
+
+# Lokal konfiqurasiya və sirlər
+*.env
+application-local.properties
+
+# OS faylları
+.DS_Store
+Thumbs.db

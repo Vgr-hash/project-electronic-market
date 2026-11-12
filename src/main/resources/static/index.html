@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html lang="az">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#101827" name="theme-color"/>
+<title>Məişət və Texnologiya Mağazası</title>
+<style>
+    :root{
+      --ink:#172033; --muted:#667085; --paper:#f6f8fc; --white:#fff;
+      --navy:#101827; --blue:#3568f5; --cyan:#39c6d8; --line:#e8edf5;
+      --shadow:0 18px 50px rgba(22,38,70,.09); --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--paper);color:var(--ink)}
+    a{text-decoration:none;color:inherit}
+    .topbar{background:#0b1220;color:#dbe4f5;font-size:13px;padding:9px 5%;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .topbar a{color:#fff;font-weight:700}
+    header{background:rgba(255,255,255,.94);backdrop-filter:blur(12px);position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line)}
+    .nav{max-width:1200px;margin:auto;padding:17px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:11px;font-weight:850;letter-spacing:-.5px;font-size:17px}
+    .brandmark{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--blue),var(--cyan));display:grid;place-items:center;color:white;font-size:21px;box-shadow:0 8px 20px #3568f544}
+    .links{display:flex;gap:27px;color:#596579;font-size:14px;font-weight:650}
+    .links a:hover{color:var(--blue)}
+    .navphone{padding:11px 17px;border-radius:13px;background:#eef3ff;color:#2455dc;font-weight:800;font-size:14px;white-space:nowrap}
+    .hero{max-width:1200px;margin:30px auto 0;padding:0 24px}
+    .hero-box{position:relative;overflow:hidden;border-radius:30px;min-height:420px;background:linear-gradient(112deg,#101b34 0%,#173b72 56%,#1b7e9c 100%);display:grid;grid-template-columns:1.05fr .95fr;align-items:center;color:white;padding:55px 6%;box-shadow:var(--shadow)}
+    .hero-box:before,.hero-box:after{content:"";position:absolute;border-radius:50%;background:#ffffff0d;pointer-events:none}
+    .hero-box:before{width:430px;height:430px;right:15%;top:-250px}
+    .hero-box:after{width:340px;height:340px;right:-80px;bottom:-220px}
+    .hero-copy{position:relative;z-index:2;max-width:560px}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;background:#ffffff18;border:1px solid #ffffff2b;padding:8px 13px;border-radius:30px;font-size:12px;font-weight:750;letter-spacing:.5px}
+    h1{font-size:clamp(36px,5vw,58px);line-height:1.08;letter-spacing:-2px;margin:20px 0 16px}
+    .hero-copy p{font-size:16px;line-height:1.75;color:#d6e4f7;max-width:490px;margin:0 0 28px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;background:white;color:#173b72;padding:14px 21px;border-radius:13px;font-weight:850;font-size:14px;transition:.2s}
+    .btn:hover{transform:translateY(-3px);box-shadow:0 12px 25px #07152a55}
+    .hero-art{position:relative;z-index:1;display:flex;justify-content:center;align-items:center;min-height:300px}
+    .hero-art img{width:min(100%,470px);height:310px;object-fit:cover;border-radius:25px;box-shadow:0 25px 55px #06142a66;transform:rotate(2deg);border:5px solid #ffffff24}
+    .section{max-width:1200px;margin:74px auto 0;padding:0 24px}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:25px}
+    .kicker{color:var(--blue);font-size:12px;font-weight:850;text-transform:uppercase;letter-spacing:1.3px}
+    h2{font-size:clamp(27px,3vw,36px);letter-spacing:-1.1px;margin:8px 0 0}
+    .section-head p{color:var(--muted);font-size:14px;margin:0;max-width:390px;line-height:1.6}
+    .categories{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .category{background:white;border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:transform .22s,box-shadow .22s}
+    .category:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+    .category img{width:100%;height:180px;object-fit:cover;display:block;background:#e9eef7}
+    .cat-info{padding:17px 18px 19px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+    .cat-info h3{font-size:15px;margin:0}
+    .arrow{width:32px;height:32px;border-radius:50%;background:#eef3ff;color:var(--blue);display:grid;place-items:center;font-weight:900}
+    .benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+    .benefit{background:white;border:1px solid var(--line);border-radius:18px;padding:23px;display:flex;gap:15px;align-items:flex-start}
+    .benefit-icon{width:44px;height:44px;border-radius:14px;background:#edf3ff;color:var(--blue);display:grid;place-items:center;font-size:21px;flex:none}
+    .benefit h3{font-size:15px;margin:2px 0 6px}
+    .benefit p{font-size:13px;line-height:1.6;color:var(--muted);margin:0}
+    .contact{max-width:1200px;margin:74px auto;padding:0 24px}
+    .contact-box{border-radius:26px;background:#eaf1ff;padding:34px 40px;display:flex;justify-content:space-between;align-items:center;gap:24px}
+    .contact-box h2{font-size:28px;margin:0 0 8px}
+    .contact-box p{color:#5d6b83;margin:0;line-height:1.6}
+    .call{background:var(--blue);color:white;padding:15px 22px;border-radius:14px;font-weight:850;white-space:nowrap;box-shadow:0 9px 20px #3568f533}
+    footer{background:var(--navy);color:#b8c4d8;padding:28px 24px}
+    .footer-inner{max-width:1152px;margin:auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px}
+    .footer-inner strong{color:white}
+
+    .catalog-tools{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:0 0 22px}
+    .searchbox{flex:1;min-width:220px;position:relative}
+    .searchbox input{width:100%;border:1px solid var(--line);background:#fff;border-radius:14px;padding:14px 16px 14px 43px;font:inherit;font-size:14px;outline:none;transition:.2s}
+    .searchbox input:focus{border-color:#8da9ff;box-shadow:0 0 0 4px #3568f514}
+    .searchbox span{position:absolute;left:15px;top:12px;color:#8b96a9;font-size:18px}
+    .cart-count{border:0;background:#101b34;color:#fff;border-radius:13px;padding:13px 17px;font:inherit;font-size:13px;font-weight:800}
+    .filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:24px}
+    .filter-btn{border:1px solid var(--line);background:#fff;color:#596579;border-radius:30px;padding:9px 15px;font:inherit;font-size:12px;font-weight:750;cursor:pointer;transition:.2s}
+    .filter-btn:hover,.filter-btn.active{background:#eaf0ff;color:#2455dc;border-color:#cddaff}
+    .products-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:17px}
+    .product-card{background:#fff;border:1px solid var(--line);border-radius:19px;overflow:hidden;transition:transform .2s,box-shadow .2s;min-width:0}
+    .product-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+    .product-photo{height:190px;background:#f0f3f8;position:relative;overflow:hidden}
+    .product-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}
+    .product-card:hover .product-photo img{transform:scale(1.045)}
+    .tag{position:absolute;left:12px;top:12px;background:#e8f8f2;color:#16845c;padding:6px 9px;border-radius:30px;font-size:10px;font-weight:850}
+    .product-info{padding:15px}
+    .product-category{font-size:10px;color:var(--blue);font-weight:850;text-transform:uppercase;letter-spacing:.6px}
+    .product-info h3{font-size:14px;line-height:1.45;min-height:41px;margin:7px 0;color:var(--ink)}
+    .spec{font-size:11px;color:var(--muted);min-height:30px;line-height:1.45}
+    .product-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:14px}
+    .price{font-size:18px;font-weight:900;letter-spacing:-.5px;white-space:nowrap}
+    .add-btn{border:0;background:#edf3ff;color:#2455dc;width:37px;height:37px;border-radius:12px;font-size:20px;font-weight:800;cursor:pointer;transition:.2s}
+    .add-btn:hover{background:var(--blue);color:white;transform:scale(1.05)}
+    .price-note{font-size:11px;color:#8792a4;margin:16px 0 0;line-height:1.5}
+    .empty-state{display:none;padding:30px;text-align:center;color:var(--muted);background:#fff;border:1px dashed #d7deea;border-radius:16px;grid-column:1/-1}
+    @media(max-width:1000px){.products-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    @media(max-width:700px){.products-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.product-photo{height:155px}}
+    @media(max-width:420px){.products-grid{gap:10px}.product-photo{height:125px}.product-info{padding:11px}.product-info h3{font-size:12px}.price{font-size:15px}.add-btn{width:32px;height:32px}}
+
+    @media(max-width:850px){.hero-box{grid-template-columns:1fr;padding:42px 7%}.hero-art{margin-top:30px;min-height:220px}.hero-art img{height:230px}.categories{grid-template-columns:repeat(2,1fr)}.links{display:none}}
+    @media(max-width:560px){.topbar{justify-content:center;text-align:center}.nav{padding:13px 18px}.brand{font-size:14px}.brandmark{width:37px;height:37px}.navphone{font-size:12px;padding:10px 11px}.hero{padding:0 14px;margin-top:16px}.hero-box{border-radius:22px;padding:34px 23px}.hero-copy p{font-size:14px}.hero-art img{height:190px}.section{padding:0 16px;margin-top:55px}.section-head{display:block}.section-head p{margin-top:10px}.categories{gap:11px}.category img{height:130px}.cat-info{padding:13px}.cat-info h3{font-size:13px}.arrow{width:27px;height:27px}.benefits{grid-template-columns:1fr}.contact{padding:0 16px;margin:55px auto}.contact-box{padding:26px 22px;display:block}.call{display:inline-flex;margin-top:20px}.contact-box h2{font-size:24px}}
+  </style>
+</head>
+<body>
+	
+<div class="topbar">
+<span>Gündəlik rahatlığınız üçün texnologiya</span>
+<span>📞 Bizimlə əlaqə: <a href="tel:+994552118888">055-211-88-88</a></span>
+</div>
+<header>
+<nav class="nav">
+<a class="brand" href="#">
+<span class="brandmark">✦</span>
+<span>Məişət və Texnologiya<br/>Mağazası</span>
+</a>
+<div class="links">
+<a href="#home">Ana səhifə</a><a href="#categories">Kateqoriyalar</a><a href="#products">Məhsullar</a><a href="#advantages">Üstünlüklər</a><a href="#contact">Əlaqə</a>
+</div>
+<a class="navphone" href="tel:+994552118888">☎ 055-211-88-88</a>
+</nav>
+</header>
+<main>
+<section class="hero" id="home">
+<div class="hero-box">
+<div class="hero-copy">
+<span class="eyebrow">✦ TEXNOLOGİYA İLƏ DAHA RAHAT HƏYAT</span>
+<h1>Həyatınızı asanlaşdıran seçimlər.</h1>
+<p>Ev və gündəlik həyat üçün müasir texnologiya, faydalı məişət cihazları və rahat alış-veriş təcrübəsi bir ünvanda.</p>
+<a class="btn" href="#categories">Məhsullara nəzər sal  →</a>
+</div>
+<div class="hero-art">
+<img alt="Müasir elektronika və texnologiya məhsulları" src="https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&amp;fit=crop&amp;w=1100&amp;q=85"/>
+</div>
+</div>
+</section>
+<section class="section" id="categories">
+<div class="section-head">
+<div><span class="kicker">Kəşf edin</span><h2>Kateqoriyalarımız</h2></div>
+<p>Ehtiyacınıza uyğun məhsulları rahatlıqla tapın. Seçimləriniz üçün ilham alın.</p>
+</div>
+<div class="categories">
+<a class="category" data-category-link="telefon" href="kateqoriya-telefon.html"><img alt="Smartfonlar" onerror="this.src='https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&amp;fit=crop&amp;w=700&amp;q=80'" src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&amp;fit=crop&amp;w=700&amp;q=80"/><div class="cat-info"><h3>Telefonlar və aksesuarlar</h3><span class="arrow">↗</span></div></a>
+<a class="category" data-category-link="noutbuk" href="kateqoriya-noutbuk.html"><img alt="Noutbuk və kompüterlər" src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&amp;fit=crop&amp;w=700&amp;q=80"/><div class="cat-info"><h3>Noutbuk və kompüterlər</h3><span class="arrow">↗</span></div></a>
+<a class="category" data-category-link="tv" href="kateqoriya-tv.html"><img alt="Televizorlar" src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&amp;fit=crop&amp;w=700&amp;q=80"/><div class="cat-info"><h3>Televizorlar</h3><span class="arrow">↗</span></div></a>
+<a class="category" data-category-link="soyuducu" href="kateqoriya-soyuducu.html"><img alt="Soyuducu" src="https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?auto=format&amp;fit=crop&amp;w=700&amp;q=80"/><div class="cat-info"><h3>Soyuducular</h3><span class="arrow">↗</span></div></a>
+<a class="category" data-category-link="paltaryuyan" href="kateqoriya-paltaryuyan.html"><img alt="Paltaryuyan maşın" src="https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&amp;fit=crop&amp;w=700&amp;q=80"/><div class="cat-info"><h3>Paltaryuyan maşınlar</h3><span class="arrow">↗</span></div></a>
+<a class="category" data-category-link="metbex" href="kateqoriya-metbex.html"><img alt="Mətbəx texnikası" src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&amp;fit=crop&amp;w=700&amp;q=80"/><div class="cat-info"><h3>Mətbəx texnikası</h3><span class="arrow">↗</span></div></a>
+<a class="category" data-category-link="audio" href="kateqoriya-audio.html"><img alt="Qulaqlıqlar" onerror="this.src='https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&amp;fit=crop&amp;w=700&amp;q=80'" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&amp;fit=crop&amp;w=700&amp;q=80"/><div class="cat-info"><h3>Audio və qulaqlıqlar</h3><span class="arrow">↗</span></div></a>
+<a class="category" data-category-link="smart" href="kateqoriya-smart.html"><img alt="Ağıllı ev cihazları" src="https://images.unsplash.com/photo-1558008258-3256797b43f3?auto=format&amp;fit=crop&amp;w=700&amp;q=80"/><div class="cat-info"><h3>Ağıllı ev cihazları</h3><span class="arrow">↗</span></div></a>
+</div>
+</section>
+<section class="section" id="products">
+<div class="section-head">
+<div><span class="kicker">Mağaza kataloqu</span><h2>Seçilmiş məhsullar</h2></div>
+<p>Kateqoriya seçin, məhsullara baxın və axtarışdan istifadə edərək istədiyinizi tapın.</p>
+</div>
+<div class="catalog-tools">
+<label class="searchbox"><span>⌕</span><input id="productSearch" placeholder="Məhsul və ya brend axtar..." type="search"/></label>
+<button class="cart-count" id="cartCount" data-cart-link type="button">🛒 Səbət: <span data-cart-count>0</span></button>
+</div>
+<div aria-label="Məhsul kateqoriyaları" class="filters">
+<button class="filter-btn active" data-filter="all">Hamısı</button>
+<button class="filter-btn" data-filter="telefon">Telefonlar</button>
+<button class="filter-btn" data-filter="noutbuk">Noutbuklar</button>
+<button class="filter-btn" data-filter="tv">Televizorlar</button>
+<button class="filter-btn" data-filter="soyuducu">Soyuducular</button>
+<button class="filter-btn" data-filter="paltaryuyan">Paltaryuyanlar</button>
+<button class="filter-btn" data-filter="metbex">Mətbəx texnikası</button>
+<button class="filter-btn" data-filter="audio">Audio</button>
+<button class="filter-btn" data-filter="smart">Ağıllı ev</button>
+</div>
+<div class="products-grid" id="productsGrid" data-catalog="all">
+<div class="empty-state" id="emptyState">Axtarışınıza uyğun məhsul tapılmadı.</div>
+</div>
+<p class="price-note">Qeyd: Saytdakı qiymətlər və məhsul şəkilləri nümayiş məqsədli nümunə kataloqudur. Real satışdan əvvəl qiymət, stok və zəmanət məlumatlarını mağaza üzrə təsdiqləyin.</p>
+</section>
+<section class="section" id="advantages">
+<div class="section-head">
+<div><span class="kicker">Niyə biz?</span><h2>Rahat alış-verişin ünvanı</h2></div>
+<p>Sadə seçim, aydın məlumat və sizin rahatlığınızı düşünən xidmət.</p>
+</div>
+<div class="benefits">
+<div class="benefit"><span class="benefit-icon">✧</span><div><h3>Seçilmiş məhsullar</h3><p>Gündəlik ehtiyaclara uyğun texnologiya və məişət cihazları.</p></div></div>
+<div class="benefit"><span class="benefit-icon">♡</span><div><h3>Müştəriyə diqqət</h3><p>Suallarınız üçün bizimlə asanlıqla əlaqə saxlaya bilərsiniz.</p></div></div>
+<div class="benefit"><span class="benefit-icon">⌁</span><div><h3>Rahat təcrübə</h3><p>Sadə menyu, aydın kateqoriyalar və mobil cihazlara uyğun dizayn.</p></div></div>
+</div>
+</section>
+<section class="contact" id="contact">
+<div class="contact-box">
+<div><h2>Sizə kömək etməyə hazırıq.</h2><p>Məhsullar və sifarişlə bağlı sualınız var? Bizimlə əlaqə saxlayın.</p></div>
+<a class="call" href="tel:+994552118888">📞 055-211-88-88</a>
+</div>
+</section>
+</main>
+<footer><div class="footer-inner"><span><strong>Məişət və Texnologiya Mağazası</strong> · Rahatlığınız üçün doğru seçim.</span><span>Əlaqə: <a href="tel:+994552118888">055-211-88-88</a></span><span>© 2026 Bütün hüquqlar qorunur.</span></div></footer>
+<script src="assets/shop.js"></script>
+
+<!-- Sağ yuxarı künc qeydiyyat/giriş paneli -->
+<div id="auth-widget" style="position: fixed; top: 15px; right: 20px; z-index: 9999; font-family: Arial, sans-serif;">
+    <button id="auth-btn" style="background: #ff6600; color: white; border: none; padding: 10px 18px; border-radius: 25px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: 0.3s;">
+        <i class="fas fa-user"></i> Qeydiyyat
+    </button>
+</div>
+
+<!-- Qeydiyyat Modalı -->
+<div id="auth-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 10000; justify-content: center; align-items: center;">
+    <div style="background: white; padding: 30px; border-radius: 12px; width: 360px; position: relative; box-shadow: 0 5px 20px rgba(0,0,0,0.3);">
+        <span id="close-modal" style="position: absolute; top: 12px; right: 18px; cursor: pointer; font-size: 24px; color: #888;">&times;</span>
+        <h2 style="margin-bottom: 20px; color: #333; font-size: 22px; text-align: center;">Hesab Yarat</h2>
+        <form id="user-register-form">
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px; color: #555; font-size: 14px;">Ad və Soyad</label>
+                <input type="text" id="user-name" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px; color: #555; font-size: 14px;">E-poçt ünvanı</label>
+                <input type="email" id="user-email" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;">
+            </div>
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 5px; color: #555; font-size: 14px;">Şifrə</label>
+                <input type="password" id="user-pass" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;">
+            </div>
+            <button type="submit" style="width: 100%; background: #28a745; color: white; border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 16px; transition: 0.2s;">Qeydiyyatdan Keç</button>
+        </form>
+    </div>
+</div>
+
+<!-- Uğurlu Qeydiyyat Toast Bildirişi -->
+<div id="success-toast" style="display: none; position: fixed; bottom: 30px; right: 30px; background: #28a745; color: white; padding: 15px 25px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 10001; font-weight: bold; animation: fadeIn 0.5s;">
+    ✅ Qeydiyyat uğurla tamamlandı! Xoş gəldiniz!
+</div>
+</body>
+</html>
